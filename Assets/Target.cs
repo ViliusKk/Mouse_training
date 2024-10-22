@@ -6,6 +6,7 @@ using UnityEngine;
 public class Target : MonoBehaviour
 {
     public TMP_Text score;
+    public TMP_Text startText;
     int scoreCount = 0;
     Vector2 pos;
     AudioSource hitSource;
@@ -18,12 +19,16 @@ public class Target : MonoBehaviour
 
     void OnMouseDown()
     {
+        startText.gameObject.SetActive(false);
+
         score.text = scoreCount.ToString();
         scoreCount++;
+
         float randomX = Random.Range(-8f, 8f);
         float randomY = Random.Range(-4.2f, 4.2f);
         pos = new Vector2(randomX, randomY);
         transform.position = pos;
+
         hitSource.Play();
     }
 }
